@@ -1,0 +1,40 @@
+# sample config defaults file
+params:
+  epochs: 100
+  batch_size: 8
+  output_dir: 'wandb_classification'   
+  learning_rate: 7e-6
+  max_steps: 4000
+  warmup_steps: 300
+  weight_decay: 0.01
+  logging_steps: 200
+  eval_steps: 200
+  load_best_model_at_end: True
+  tf32: True
+  metric_for_best_model: 'macro_f1'
+  gradient_accumulation_steps: 1
+  per_device_eval_batch_size: 32
+  save_total_limit: 1
+  dropout: 0.1
+
+paths:
+  data: '/home/shan/Desktop/netlab/Esophagitis/aug_data_v3/'
+  project_name: 'aug_nick_drop_dev+longv3'
+  print_out: '/home/shan/Desktop/netlab/hf_template/models_attempts.txt'
+
+run:
+  max_len: 1024
+  clean: None 
+  num_classes: 22                      
+  raytune: None
+  hf_model: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
+  struc: None
+  exam: None
+  ros: None
+  rot: None
+  ih: None
+  ap: None
+  sec: None
+  downsample: False
+  concat_eval: True
+  
