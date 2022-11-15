@@ -46,7 +46,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def main(cfg) -> None:
     print(OmegaConf.to_yaml(cfg))
 
-    MAX_LEN = cfg.run.max_len
+    MAX_LEN = int(cfg.run.max_len)
     MODEL = cfg.run.hf_model
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
     
