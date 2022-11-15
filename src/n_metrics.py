@@ -66,6 +66,37 @@ def compute_metrics22(pred):
         'bclass_23': one
     }
 
+def compute_metrics222(pred):
+    labels = pred.label_ids
+    preds = pred.predictions
+    preds = pred.predictions.argmax(-1)
+    precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average='weighted')
+    f1_class = precision_recall_fscore_support(labels, preds)[2]
+    acc = accuracy_score(labels, preds)
+    zero, one= f1_class[0], f1_class[1]
+    macro_f1 = precision_recall_fscore_support(labels, preds, average='macro')[2]
+    print('### class f1 ###')
+    print(f1_class)
+    print({     'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
+                'macro_f1': macro_f1,
+                'bbclass_1': zero,
+                'bbclass_23': one
+                })
+    wandb.log({
+                'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
+                'macro_f1': macro_f1,
+                'bbclass_1': zero,
+                'bbclass_23': one
+                }) 
+    return {
+        'accuracy': acc,
+        'f1': f1,
+        'precision': precision,
+        'recall': recall,
+        'macro_f1': macro_f1,
+        'bbclass_01': zero,
+        'bbclass_23': one
+    }
 
 def compute_metrics3(pred):
     labels = pred.label_ids

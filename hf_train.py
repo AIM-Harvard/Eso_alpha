@@ -68,10 +68,13 @@ def main(cfg) -> None:
     dataset = load_dataset("csv", data_files={'train': cfg.paths.data + 'train.csv',
                                                 'valid': cfg.paths.data + 'dev.csv',
                                                 'test': cfg.paths.data + 'test.csv'})
-    print(dataset) 
+    print(dataset)
+    major_0_dataset = dataset['train'].filter(lambda example: example["degree"]==0) 
     minor_1_dataset = dataset['train'].filter(lambda example: example["degree"]==1)
     minor_23_dataset = dataset['train'].filter(lambda example: example["degree"]>=2)
     ds = dataset['train'].filter(lambda example: example["degree"]<=1)
+    if cfg.run.num_classes == 222:
+        dataset['train'] = concatenate_datasets([minor_1_dataset, minor_23_dataset]) 
     if bool(cfg.run.downsample):
         dataset['train'] = ds.train_test_split(test_size=float(cfg.run.downsample))['train']
         print(dataset) 
@@ -92,6 +95,10 @@ def main(cfg) -> None:
 
     if bool(cfg.run.concat_eval):
         dataset['test'] = concatenate_datasets([dataset['valid'], dataset['test']])
+        if cfg.run.num_classes == 222:
+            test_minor_1_dataset = dataset['test'].filter(lambda example: example["degree"]==1)
+            test_minor_23_dataset = dataset['test'].filter(lambda example: example["degree"]>=2)
+            dataset['train'] = concatenate_datasets([test_minor_1_dataset, test_minor_23_dataset]) 
         dataset['valid'] = dataset['train']
 
     ### marking labels:
@@ -102,7 +109,11 @@ def main(cfg) -> None:
 
     elif cfg.run.num_classes == 22:
         # grade 0&1 or grade 2&3
-        dataset = dataset.map(lambda x: bibi_preproc(x['labels'])) 
+        dataset = dataset.map(lambda x: bibi_preproc(x['labels']))
+
+    elif cfg.run.num_classes == 222:
+        # grade 1 or grade 2&3
+        dataset = dataset.map(lambda x: bibi_preproc(x['labels']))  
     
     elif cfg.run.num_classes == 3:
         # grade 0, 1, 2&3
@@ -222,7 +233,18 @@ def main(cfg) -> None:
             compute_metrics=compute_metrics22,
             callbacks = [EarlyStoppingCallback(early_stopping_patience=3)]
         )
-    
+
+    elif cfg.run.num_classes == 222:
+        trainer = CELTrainer(
+            args=T_args,
+            tokenizer=tokenizer,
+            train_dataset=dataset['train'],
+            eval_dataset=dataset['valid'],
+            model=model,
+            compute_metrics=compute_metrics222,
+            callbacks = [EarlyStoppingCallback(early_stopping_patience=3)]
+        ) 
+
     elif cfg.run.num_classes == 6:
         trainer = FLTrainer(
             args=T_args,
