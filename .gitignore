@@ -2,3 +2,5 @@ outputs/
 job*
 *.sh
 *.out
+*.txt
+error*
