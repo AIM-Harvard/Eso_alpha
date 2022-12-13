@@ -3,7 +3,7 @@
 # from sklearn.metrics import confusion_matrix
 # from sklearn.metrics import f1_score, precision_score, recall_score, classification_report
 
-from sklearn.metrics import roc_auc_score, precision_recall_fscore_support, accuracy_score
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score, roc_auc_score, average_precision_score
 import wandb
 import torch
 
@@ -16,13 +16,17 @@ def compute_metrics2(pred):
     acc = accuracy_score(labels, preds)
     zero, one= f1_class[0], f1_class[1]
     macro_f1 = precision_recall_fscore_support(labels, preds, average='macro')[2]
+    roc_auc = roc_auc_score(labels, preds, average='weighted')
+    auprc = average_precision_score(labels, preds, average='weighted')
     print('### class f1 ###')
     print(f1_class)
     wandb.log({
                 # 'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bclass_0': zero,
-                'bclass_1': one
+                'bclass_1': one,
+                'roc_auc': roc_auc,
+                'auprc': auprc 
                 }) 
     return {
         'accuracy': acc,
@@ -31,7 +35,9 @@ def compute_metrics2(pred):
         'recall': recall,
         'macro_f1': macro_f1,
         'bclass_0': zero,
-        'bclass_1': one
+        'bclass_1': one,
+        'roc_auc': roc_auc,
+        'auprc': auprc 
     }
 
 def compute_metrics22(pred):
@@ -43,18 +49,24 @@ def compute_metrics22(pred):
     acc = accuracy_score(labels, preds)
     zero, one= f1_class[0], f1_class[1]
     macro_f1 = precision_recall_fscore_support(labels, preds, average='macro')[2]
+    roc_auc = roc_auc_score(labels, preds, average='weighted')
+    auprc = average_precision_score(labels, preds, average='weighted')
     print('### class f1 ###')
     print(f1_class)
     print({     'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bclass_01': zero,
-                'bclass_23': one
+                'bclass_23': one,
+                'roc_auc': roc_auc,
+                'auprc': auprc 
                 })
     wandb.log({
                 'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bclass_01': zero,
-                'bclass_23': one
+                'bclass_23': one,
+                'roc_auc': roc_auc,
+                'auprc': auprc 
                 }) 
     return {
         'accuracy': acc,
@@ -63,7 +75,9 @@ def compute_metrics22(pred):
         'recall': recall,
         'macro_f1': macro_f1,
         'bclass_01': zero,
-        'bclass_23': one
+        'bclass_23': one,
+        'roc_auc': roc_auc,
+        'auprc': auprc 
     }
 
 def compute_metrics222(pred):
@@ -75,18 +89,24 @@ def compute_metrics222(pred):
     acc = accuracy_score(labels, preds)
     zero, one= f1_class[0], f1_class[1]
     macro_f1 = precision_recall_fscore_support(labels, preds, average='macro')[2]
+    roc_auc = roc_auc_score(labels, preds, average='weighted')
+    auprc = average_precision_score(labels, preds, average='weighted')
     print('### class f1 ###')
     print(f1_class)
     print({     'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bbclass_1': zero,
-                'bbclass_23': one
+                'bbclass_23': one,
+                'roc_auc': roc_auc,
+                'auprc': auprc 
                 })
     wandb.log({
                 'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bbclass_1': zero,
-                'bbclass_23': one
+                'bbclass_23': one,                
+                'roc_auc': roc_auc,
+                'auprc': auprc 
                 }) 
     return {
         'accuracy': acc,
@@ -95,7 +115,9 @@ def compute_metrics222(pred):
         'recall': recall,
         'macro_f1': macro_f1,
         'bbclass_01': zero,
-        'bbclass_23': one
+        'bbclass_23': one,
+        'roc_auc': roc_auc,
+        'auprc': auprc 
     }
 
 def compute_metrics3(pred):

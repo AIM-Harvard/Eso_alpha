@@ -68,13 +68,25 @@ def main(cfg) -> None:
     dataset = load_dataset("csv", data_files={'train': cfg.paths.data + 'train.csv',
                                                 'valid': cfg.paths.data + 'dev.csv',
                                                 'test': cfg.paths.data + 'test.csv'})
+    try:                                            
+        dataset = dataset.map(lambda x: grade2degree(x['Free Text Grade']))
+    except:
+        print('### using auged data ###')
     print(dataset)
+
     major_0_dataset = dataset['train'].filter(lambda example: example["degree"]==0) 
     minor_1_dataset = dataset['train'].filter(lambda example: example["degree"]==1)
     minor_23_dataset = dataset['train'].filter(lambda example: example["degree"]>=2)
     ds = dataset['train'].filter(lambda example: example["degree"]<=1)
     if cfg.run.num_classes == 222:
-        dataset['train'] = concatenate_datasets([minor_1_dataset, minor_23_dataset]) 
+        # dataset['train'] = concatenate_datasets([major_0_dataset, minor_23_dataset])
+        dataset['train'] = concatenate_datasets([minor_1_dataset, minor_23_dataset])
+        # dataset['train'] = concatenate_datasets([dataset['train'], minor_1_dataset]) #double class1
+        # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #double 23 class number size
+        # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #triple 23 class number size
+        # # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #4X 23 class number size  
+        print('##### final train smaples counts #####')
+        print(dataset)       
     if bool(cfg.run.downsample):
         dataset['train'] = ds.train_test_split(test_size=float(cfg.run.downsample))['train']
         print(dataset) 
@@ -82,14 +94,14 @@ def main(cfg) -> None:
         if int(cfg.run.num_classes) == 22:
             # dataset['train'] = concatenate_datasets([dataset['train'], minor_1_dataset] ) #todo, ignore the ones
             dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
-            dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
-            dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
+            # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
+            # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
         else:
             dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
-            dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
-            dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
+            # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
+            # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset])
             # dataset['train'] = concatenate_datasets([dataset['train'], minor_1_dataset])
-            dataset['train'] = concatenate_datasets([dataset['train'], minor_1_dataset])
+            # dataset['train'] = concatenate_datasets([dataset['train'], minor_1_dataset])
         print('### New sampled dataset stats ###')
         print(dataset)
 

@@ -1,40 +1,43 @@
 # sample config defaults file
 params:
-  epochs: 100
-  batch_size: 8
+  epochs: 10
+  batch_size: 20
   output_dir: 'wandb_classification'   
-  learning_rate: 7e-6
-  max_steps: 4000
-  warmup_steps: 300
+  learning_rate: 7e-5
+  max_steps: 1700
+  warmup_steps: 400
   weight_decay: 0.01
-  logging_steps: 200
-  eval_steps: 200
+  logging_steps: 400
+  eval_steps: 400
   load_best_model_at_end: True
   tf32: True
   metric_for_best_model: 'macro_f1'
   gradient_accumulation_steps: 1
   per_device_eval_batch_size: 32
   save_total_limit: 1
-  dropout: 0.1
+  dropout: 0.2
 
 paths:
   data: '/home/shan/Desktop/netlab/Esophagitis/aug_data_v3/'
-  project_name: 'aug_nick_drop_dev+longv3'
-  print_out: '/home/shan/Desktop/netlab/hf_template/models_attempts.txt'
+  project_name: 'aug*2_nick_dev+test_v3_222'
+  print_out: '/home/shan/Desktop/netlab/Eso_alpha/models_attempts.txt' #define where the result print to
 
 run:
-  max_len: 1024
-  clean: None 
-  num_classes: 22                      
-  raytune: None
-  hf_model: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
-  struc: None
-  exam: None
-  ros: None
-  rot: None
-  ih: None
-  ap: None
-  sec: None
-  downsample: False
-  concat_eval: True
+  max_len: 512
+  clean: None #help="define whether you want the text to be processed" 
+  num_classes: 22 #help="define whether which classification task you want to do"                     
+  raytune: None #help="define whether you want the text to be processed"
+  hf_model: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract" #help="define which backbone model ou choose to use"
+  struc: None #help="define whether you want include struc data"
+  exam: None #help="define whether you want include only exam text data"
+  ros: None #help="define whether you want include ROS text data"
+  rot: None #help="define whether you want include rot text data"
+  ih: None #help="define whether you want include only internal history text data"
+  ap: None #help="define whether you want include only assement plan text data"
+  sec: None #help="define whether you want include clean formatted text data") 
+  downsample: False #help="define how much down sample on the majority class")
+  concat_eval: False #help="concatenate the dev and test for evaluation"
+  silver_data_eff: None #help="define how much eliminate what percentage overall sliver training data to test out data efficency"
+  silver_aug_eff: None #help="define how much silver labeled data to add on to test out data efficency"
+
   

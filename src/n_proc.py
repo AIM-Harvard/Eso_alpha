@@ -37,6 +37,8 @@ def trinary_preproc(x):
     else:
         return {'labels': int(2)}
 
+def grade2degree(x):
+    return {'degree': x}
 
 def grade_preproc(x):
     if x is None:
