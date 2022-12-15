@@ -60,9 +60,7 @@ def main(cfg) -> None:
     run_setup = [i for i in run_setup if i != 'None']
     wandb.run.name = '_'.join(run_setup)
     print(wandb.run.name)
-    print(wandb.run.name)
-    print(wandb.run.name)
-    print(wandb.run.name)
+
 
     # Importing Data
     dataset = load_dataset("csv", data_files={'train': cfg.paths.data + 'train.csv',
@@ -78,6 +76,9 @@ def main(cfg) -> None:
     minor_1_dataset = dataset['train'].filter(lambda example: example["degree"]==1)
     minor_23_dataset = dataset['train'].filter(lambda example: example["degree"]>=2)
     ds = dataset['train'].filter(lambda example: example["degree"]<=1)
+    dataset['train'] = dataset['train'].filter(lambda example: example["g_or_s"]=='gold')
+    dataset['valid'] = dataset['train'].filter(lambda example: example["g_or_s"]=='gold')
+
     if cfg.run.num_classes == 222:
         # dataset['train'] = concatenate_datasets([major_0_dataset, minor_23_dataset])
         dataset['train'] = concatenate_datasets([minor_1_dataset, minor_23_dataset])
@@ -85,8 +86,9 @@ def main(cfg) -> None:
         # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #double 23 class number size
         # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #triple 23 class number size
         # # dataset['train'] = concatenate_datasets([dataset['train'], minor_23_dataset]) #4X 23 class number size  
-        print('##### final train smaples counts #####')
-        print(dataset)       
+        print('##### final train samples counts #####')
+        print(dataset)
+           
     if bool(cfg.run.downsample):
         dataset['train'] = ds.train_test_split(test_size=float(cfg.run.downsample))['train']
         print(dataset) 
@@ -112,7 +114,9 @@ def main(cfg) -> None:
             test_minor_23_dataset = dataset['test'].filter(lambda example: example["degree"]>=2)
             dataset['train'] = concatenate_datasets([test_minor_1_dataset, test_minor_23_dataset]) 
         dataset['valid'] = dataset['train']
-
+    
+    print('~~~~final dataset~~~~')
+    print(dataset) 
     ### marking labels:
     dataset = dataset.map(lambda x: grade_preproc(x['degree'])) #Free Text Grade #degree
     if cfg.run.num_classes == 2:
@@ -159,6 +163,8 @@ def main(cfg) -> None:
     if cfg.run.rot == 'None' and cfg.run.ros == 'None' and cfg.run.exam == 'None' and cfg.run.ap == 'None' and cfg.run.ih == 'None' and cfg.run.sec == 'None':
         print('no changes addded to original text')
     else:
+        dataset = dataset.map(lambda x: text2sec(x))
+        dataset = dataset.map(lambda x: mask_struc(x))
         dataset = dataset.map(lambda x: text_full_text(x))
 
     if cfg.run.struc != 'None':

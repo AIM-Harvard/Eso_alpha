@@ -1,10 +1,10 @@
 # sample config defaults file
 params:
   epochs: 10
-  batch_size: 20
+  batch_size: 22
   output_dir: 'wandb_classification'   
-  learning_rate: 7e-5
-  max_steps: 1700
+  learning_rate: 9e-5
+  max_steps: 3000
   warmup_steps: 400
   weight_decay: 0.01
   logging_steps: 400

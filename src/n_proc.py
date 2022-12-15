@@ -1,6 +1,7 @@
 import re
 import torch
 
+
 def text_preproc(x, lower=False, stop_words=False, punctuation=False):
     if lower:
         x = x.lower()
@@ -105,6 +106,21 @@ def text_ap(x):
     
 def text_sec(x):
     return {'text': str(x['sec_text'])}
+
+def text2sec(x):
+    '''
+    fix no ap and no ih issue
+    '''
+    if 'aNo_textiNo_text' in str(x):
+        return {'text': str(x['sec_text'])}
+    else:
+        return {'text': str(x['text'])} 
+
+def mask_struc(x):
+    regex = r":  \d"
+    subst = "**"
+    result = re.sub(regex, subst, x, 0, re.MULTILINE)
+    return {'text': str(result)}
 
 def text_full_text(x):
     return {'Full Text': str(x['text'])}
