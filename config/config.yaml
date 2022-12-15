@@ -20,7 +20,7 @@ params:
 paths:
   data: '/home/shan/Desktop/netlab/Esophagitis/aug_data_v3/'
   project_name: 'aug*2_nick_dev+test_v3_222'
-  print_out: '/home/shan/Desktop/netlab/Eso_alpha/models_attempts.txt' #define where the result print to
+  print_out: '/home/shan/Desktop/netlab/Esophagitis/models_attempts.txt' #define where the result print to
 
 run:
   max_len: 512
