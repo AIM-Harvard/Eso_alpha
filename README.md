@@ -33,13 +33,12 @@ https://docs.google.com/spreadsheets/d/1kR2qDXBNn-ojvqoyNZGHgHkjLL49PsP6/edit?us
 
 # Code structure:
 
-The structure of this repo is quite self explantory where `train.py` is the main training file. And all configs are handle by `hydra` under the `config` folder. The baseline for TF-IDF weighted BoW+SGD can be found in the jupyter notebook under `Baselines` and all the ultilities functions can be found under `src` where:
+The structure of this repo is quite self-explanatory. The main training file is train.py, and all configurations are handled by hydra under the config folder. You can find the baseline for TF-IDF weighted BoW+SGD in the Jupyter notebook under the Baselines folder, and all utility functions are located under the src folder:
 
-    `n_metrics.py`  handles all the metric reports
-    `n_trainer_classes.py` contains all the customerize trainers
-    `n_proc.py` holds all the preprocessing functions
-
-We cannot include our in-house sectionizer publicly on this repo due to potential privacy concerns. If you wish to learn more details about it, feel free to contact us!
+    `n_metrics.py` handles all metric reporting.
+    `n_trainer_classes.py` contains all customized trainers.
+    `n_proc.py` holds all preprocessing functions.
+Due to potential privacy concerns, we cannot include our in-house sectionizer publicly in this repo. If you wish to learn more details about it, please feel free to contact us!
 
 # Citation:
 Waiting for arxiv link
