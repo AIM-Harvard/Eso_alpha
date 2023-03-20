@@ -20,6 +20,8 @@ def compute_metrics2(pred):
     auprc = average_precision_score(labels, preds, average='weighted')
     print('### class f1 ###')
     print(f1_class)
+    print(list(labels))
+    print(list(preds))
     wandb.log({
                 # 'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
@@ -53,6 +55,8 @@ def compute_metrics22(pred):
     auprc = average_precision_score(labels, preds, average='weighted')
     print('### class f1 ###')
     print(f1_class)
+    print(list(labels))
+    print(list(preds))
     print({     'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'bclass_01': zero,
@@ -130,7 +134,9 @@ def compute_metrics3(pred):
     one, two, three = f1_class[0], f1_class[1], f1_class[2]
     macro_f1 = precision_recall_fscore_support(labels, preds, average='macro')[2]
     print('### class f1 ###')
-    print(f1_class)    
+    print(f1_class)
+    print(list(labels))
+    print(list(preds))    
     print({     'micro_f1': precision_recall_fscore_support(labels, preds, average='micro')[2],
                 'macro_f1': macro_f1,
                 'class_0': one,

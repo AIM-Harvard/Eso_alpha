@@ -3,12 +3,12 @@ params:
   epochs: 10
   batch_size: 22
   output_dir: 'wandb_classification'   
-  learning_rate: 9e-5
-  max_steps: 3000
-  warmup_steps: 400
+  learning_rate: 1e-6
+  max_steps: 8000
+  warmup_steps: 200
   weight_decay: 0.01
   logging_steps: 400
-  eval_steps: 400
+  eval_steps: 200
   load_best_model_at_end: True
   tf32: True
   metric_for_best_model: 'macro_f1'
@@ -18,24 +18,25 @@ params:
   dropout: 0.2
 
 paths:
-  data: '/home/shan/Desktop/netlab/Esophagitis/aug_data_v3/'
-  project_name: 'aug*2_nick_dev+test_v3_222'
-  print_out: '/home/shan/Desktop/netlab/Eso_alpha/models_attempts.txt' #define where the result print to
+  data: '/home/shan/Desktop/netlab/Esophagitis/aaaug_data22'
+  project_name: 'aug_apih_fixed_nick_dev_test'
+  print_out: '/home/shan/Desktop/netlab/Eso_alpha/models_attempts_control.txt' #define where the result print to
 
 run:
   max_len: 512
   clean: None #help="define whether you want the text to be processed" 
   num_classes: 22 #help="define whether which classification task you want to do"                     
   raytune: None #help="define whether you want the text to be processed"
-  hf_model: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract" #help="define which backbone model ou choose to use"
+  hf_model: "bionlp/bluebert_pubmed_uncased_L-24_H-1024_A-16" #help="define which backbone model ou choose to use"
   struc: None #help="define whether you want include struc data"
   exam: None #help="define whether you want include only exam text data"
   ros: None #help="define whether you want include ROS text data"
   rot: None #help="define whether you want include rot text data"
   ih: None #help="define whether you want include only internal history text data"
   ap: None #help="define whether you want include only assement plan text data"
-  sec: None #help="define whether you want include clean formatted text data") 
-  downsample: False #help="define how much down sample on the majority class")
+  sec: None #help="define whether you want include clean formatted text data")
+  chunk: None #help="define whether you want include chunked text data")  
+  downsample: 0 #help="define how much down sample on the majority class")
   concat_eval: False #help="concatenate the dev and test for evaluation"
   silver_data_eff: None #help="define how much eliminate what percentage overall sliver training data to test out data efficency"
   silver_aug_eff: None #help="define how much silver labeled data to add on to test out data efficency"

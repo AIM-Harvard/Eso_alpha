@@ -11,12 +11,22 @@ def text_preproc(x, lower=False, stop_words=False, punctuation=False):
     x = re.sub(r'https*\S+', ' ', x)
     x = re.sub(r'@\S+', ' ', x)
     x = re.sub(r'#\S+', ' ', x)
-    x = re.sub(r'\'\w+', '', x)
-    # if punctuation:
-    #     x = re.sub('[%s]' % re.escape(string.punctuation), ' ', x)
-    x = re.sub(r'\w*\d+\w*', '', x)
     x = re.sub(r'\s{2,}', ' ', x)
+    x = re.sub(r'[G-g]rade\s\d', '', x)
     return {'clean_text': x}
+
+def text2sec(x):
+    '''
+    fix no ap and no ih issue
+    '''
+    if 'aNo_textiNo_text' in str(x['text']):
+        return {'text': str(x['sec_text'])}
+    elif 'iNo_text' in str(x['text']):
+        return {'text': str(x['sec_text'])}
+    elif 'aNo_text' in str(x['text']):
+	    return {'text': str(x['sec_text'])}  
+    else:
+        return {'text': str(x['text'])}
 
 def bibi_preproc(x):
     if x < 2 :
@@ -121,6 +131,34 @@ def mask_struc(x):
     subst = "**"
     result = re.sub(regex, subst, x, 0, re.MULTILINE)
     return {'text': str(result)}
+
+def mask_struc1(x):
+    regex = r": \d"
+    subst = "**"
+    result = re.sub(regex, subst, str(x), 0, re.MULTILINE)
+    return {'text': str(result)}
+
+def mask_struc2(x):
+    regex = r"- None"
+    subst = "**"
+    result = re.sub(regex, subst, str(x), 0, re.MULTILINE)
+    return {'text': str(result)}
+
+def chunk_off1(x):
+    try:
+        index = x.index('Toxicity Grading')
+        return {'text': str(x[:index])}
+    except:
+        index = len(x)
+        return {'text': str(x[:index])}
+
+def chunk_off2(x):
+    try:
+        index = x.index('Assessment and Plan of Care')
+        return {'text': str(x[:index])}
+    except:
+        index = len(x)
+        return {'text': str(x[:index])}
 
 def text_full_text(x):
     return {'Full Text': str(x['text'])}
