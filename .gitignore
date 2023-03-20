@@ -3,4 +3,10 @@ job*
 *.sh
 *.out
 *.txt
+*ipynb
 error*
+111*
+222*
+14*
+*.xlsx
+*__pycache__*
