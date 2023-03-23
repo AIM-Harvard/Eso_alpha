@@ -38,7 +38,10 @@ The structure of this repo is quite self-explanatory. The main training file is 
     `n_metrics.py` handles all metric reporting.
     `n_trainer_classes.py` contains all customized trainers.
     `n_proc.py` holds all preprocessing functions.
-Due to potential privacy concerns, we cannot include our in-house sectionizer publicly in this repo. If you wish to learn more details about it, please feel free to contact us!
+And under folder `sectionizer`
+    `sys_run_demo.ipynb` is the sample run to show how to use the sectionizer.
+    `sectionize_docs.py` holds the sectionizer function.
+    `section_patterns.json` contains the sectionizer rules.
 
 # Citation:
 Waiting for arxiv link
