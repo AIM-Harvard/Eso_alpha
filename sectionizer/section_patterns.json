@@ -1,0 +1,564 @@
+{
+    "section_rules": [
+        {
+            "literal": "Date:",
+            "category": "Header"
+        },
+        {
+            "literal": "Requesting Provider:",
+            "category": "Header"
+        },
+        {
+            "literal": "Date of Birth:",
+            "category": "Header"
+        },
+        {
+            "literal": "MRN:",
+            "category": "Header"
+        },
+        {
+            "literal": "Date of Consult:",
+            "category": "Header"
+        },
+        {
+            "literal": "Medical Oncologist:",
+            "category": "Header"
+        },
+        {
+            "literal": "Surgical Oncologist:",
+            "category": "Header"
+        },
+        {
+            "literal": "Radiation Oncologist:",
+            "category": "Header"
+        },
+        {
+            "literal": "Fellow:",
+            "category": "Header"
+        },
+        {
+            "literal": "Attending Oncologist:",
+            "category": "Header"
+        },
+        {
+            "literal": "Inpatient Attending:",
+            "category": "Header"
+        },
+        {
+            "literal": "Location of consult (inpatient or outpatient):",
+            "category": "Header"
+        },
+        {
+            "literal": "Care Team:",
+            "category": "Header"
+        },
+        {
+            "literal": "Date of Visit",
+            "category": "Header"
+        },
+        {
+            "literal": "DOB:",
+            "category": "Header"
+        },
+        {
+            "literal": "Code Status:",
+            "category": "Code Status"
+        },
+        {
+            "literal": "Current Code Status",
+            "category": "Code Status"
+        },
+        {
+            "literal": "Identification:",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "Identifier:",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "ID:",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "CC",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "ID/CC",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "Chief Complaint",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "Patient Information:",
+            "category": "Chief Complaint"
+        },
+        {
+            "literal": "History:",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "HPI",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "History of Present Illness:",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Subjective",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Oncology History Overview Note",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Oncologic History:",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Oncology History",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Oncological History:",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Interval History",
+            "category": "History/Subjective"
+        },
+        {
+            "literal": "Review of Systems",
+            "category": "Review of Systems"
+        },
+        {
+            "literal": "ROS",
+            "category": "Review of Systems"
+        },
+        {
+            "literal": "Radiation Risk Factors:",
+            "category": "RT Risk"
+        },
+        {
+            "literal": "Prior Radiation:",
+            "category": "Prior RT"
+        },
+        {
+            "literal": "Past History:",
+            "category": "Past History"
+        },
+        {
+            "literal": "Problem List:",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "Patient Active Problem List",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "Past Medical History",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMH",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMHx",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "Past Medical & Surgical History",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMH/PSH",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMHx/PSHx",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMH & PSH",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "PMHx & PSHx",
+            "category": "Past Medical History"
+        },
+        {
+            "literal": "Past Surgical History:",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PSH",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "Surgical History:",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PSHx",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "Past Medical & Surgical History",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PMH/PSH",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PMHx/PSHx",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PMH & PSH",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "PMHx & PSHx",
+            "category": "Past Surgical History"
+        },
+        {
+            "literal": "GYN:",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "OB/GYN:",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "OB/GYN history",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "OB/GYN History:",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "GYN History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Gynecologic History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrics/Gynecologic History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrics History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "OB/GYN Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "OB/GYN Hx:",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "GYN Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Gynecologic Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrics/Gynecologic Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrics Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrical History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Obstetrical Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Gynecological Hx",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Gynecological History",
+            "category": "Gyn History"
+        },
+        {
+            "literal": "Family History",
+            "category": "Family History"
+        },
+        {
+            "literal": "FH",
+            "category": "Family History"
+        },
+        {
+            "literal": "FHx",
+            "category": "Family History"
+        },
+        {
+            "literal": "Social History",
+            "category": "Social History"
+        },
+        {
+            "literal": "SH",
+            "category": "Social History"
+        },
+        {
+            "literal": "SHx",
+            "category": "Social History"
+        },
+        {
+            "literal": "Smoking History",
+            "category": "Social History"
+        },
+        {
+            "literal": "Smoking Hx",
+            "category": "Social History"
+        },
+        {
+            "literal": "Alcohol History",
+            "category": "Social History"
+        },
+        {
+            "literal": "Alcohol Hx",
+            "category": "Social History"
+        },
+        {
+            "literal": "Drug Use:",
+            "category": "Social History"
+        },
+        {
+            "literal": "Alcohol Use:",
+            "category": "Social History"
+        },
+        {
+            "literal": "Tobacco Use:",
+            "category": "Social History"
+        },
+        {
+            "literal": "Social Narrative",
+            "category": "Social History"
+        },
+        {
+            "literal": "Medications:",
+            "category": "Meds"
+        },
+        {
+            "literal": "Home Medications:",
+            "category": "Meds"
+        },
+        {
+            "literal": "Current Outpatient Medications",
+            "category": "Meds"
+        },
+        {
+            "literal": "Outpatient Medications",
+            "category": "Meds"
+        },
+        {
+            "literal": "Facility-Administered Medications",
+            "category": "Meds"
+        },
+        {
+            "literal": "Inpatient Medications",
+            "category": "Meds"
+        },
+        {
+            "literal": "Allergies",
+            "category": "Allergies"
+        },
+        {
+            "literal": "Social Determinants of Health",
+            "category": "SDoH"
+        },
+        {
+            "literal": "Vitals:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Vital signs:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Most recent vitals:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Examination:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Physical Exam",
+            "category": "Exam"
+        },
+        {
+            "literal": "Physical Examination",
+            "category": "Exam"
+        },
+        {
+            "literal": "PE:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Exam:",
+            "category": "Exam"
+        },
+        {
+            "literal": "Labs:",
+            "category": "Labs"
+        },
+        {
+            "literal": "Labs/Imaging:",
+            "category": "Labs"
+        },
+        {
+            "literal": "Laboratory",
+            "category": "Labs"
+        },
+        {
+            "literal": "Pathology:",
+            "category": "Path"
+        },
+        {
+            "literal": "Pathology Results:",
+            "category": "Path"
+        },
+        {
+            "literal": "Imaging:",
+            "category": "Imaging"
+        },
+        {
+            "literal": "Labs/Imaging:",
+            "category": "Imaging"
+        },
+        {
+            "literal": "Radiology",
+            "category": "Imaging"
+        },
+        {
+            "literal": "Results for orders placed or performed",
+            "category": "Objective NOS"
+        },
+        {
+            "literal": "Answers for HPI/ROS",
+            "category": "PROMs"
+        },
+        {
+            "literal": "Assessment:",
+            "category": "A/P"
+        },
+        {
+            "literal": "A/P:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Assessment/Plan",
+            "category": "A/P"
+        },
+        {
+            "literal": "Assessment and Plan",
+            "category": "A/P"
+        },
+        {
+            "literal": "Assessment and Plan of Care",
+            "category": "A/P"
+        },
+        {
+            "literal": "Summary of Plan",
+            "category": "A/P"
+        },
+        {
+            "literal": "Impression:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Impression and Plan:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Recommendations:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Follow up plan:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Follow-up plan:",
+            "category": "A/P"
+        },
+        {
+            "literal": "Attending Statement:",
+            "category": "Attestation"
+        },
+        {
+            "literal": "Attending Attestation:",
+            "category": "Attestation"
+        },
+        {
+            "literal": "Attestation",
+            "category": "Attestation"
+        },
+        {
+            "literal": "Future Appointments",
+            "category": "Administrative"
+        },
+        {
+            "literal": "Technical Evaluation",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Dose Information",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Adaptive Planning:",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Procedure Summary",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Procedure and Technical Evaluation",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Summary of Radiation Therapy:",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Metrics:",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Special Technical Considerations:",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Radiation Dose:",
+            "category": "Rad Onc Technical"
+        },
+        {
+            "literal": "Toxicity Grading",
+            "category": "ToxGrade"
+        }
+    ]
+}
