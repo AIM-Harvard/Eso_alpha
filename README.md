@@ -46,4 +46,5 @@ And under folder `sectionizer`
     `section_patterns.json` contains the sectionizer rules.
 
 # Citation:
-Waiting for arxiv link
+Shan Chen, Marco Guevara, Nicolas Ramirez, Arpi Murray, Jeremy L Warner, Hugo JWL Aerts, Timother A Miller, Guergana K Savova, Danielle S Bitterman. Natural language processing to automatically extract the presence and severity of esophagitis in notes of patients undergoing radiotherapy. aRxiv 2303.13722 doi: https://doi.org/10.48550/arXiv.2303.13722
+(Manuscript currently undergoing peer review)
